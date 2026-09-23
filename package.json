@@ -1,8 +1,8 @@
 {
-  "name": "sbm-dhamtari",
-  "version": "1.0.0",
+  "name": "sbm-gp-mis",
+  "version": "2.0.0",
   "private": true,
-  "description": "Swachh Bharat Mission field collection, user-fee, grievance and monitoring PWA for Dhamtari district, Chhattisgarh.",
+  "description": "Gram Panchayat sanitation MIS — collection, fees, IHHL, schools, SWM, hotspots and monitoring PWA.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^13.0.3",
     "exceljs": "^4.4.0",
     "express": "^4.22.2",
     "pg": "^8.23.0",

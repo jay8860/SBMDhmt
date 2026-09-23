@@ -1,0 +1,30 @@
+const { auth, requireRole } = require("../auth/middleware");
+
+module.exports = function mountRoutes(app, db) {
+  const mw = { auth: auth(db), requireRole };
+  app.use("/api", require("./health")(db));
+  app.use("/api", require("./auth")(db, mw));
+  app.use("/api", require("./bootstrap")(db, mw));
+  app.use("/api", require("./sync")(db, mw));
+  app.use("/api", require("./households")(db, mw));
+  app.use("/api", require("./collections")(db, mw));
+  app.use("/api", require("./payments")(db, mw));
+  app.use("/api", require("./users")(db, mw));
+  app.use("/api", require("./geography")(db, mw));
+  app.use("/api", require("./grievances")(db, mw));
+  app.use("/api", require("./assets")(db, mw));
+  app.use("/api", require("./gp")(db, mw));
+  app.use("/api", require("./villages")(db, mw));
+  app.use("/api", require("./schools")(db, mw));
+  app.use("/api", require("./anganwadis")(db, mw));
+  app.use("/api", require("./buildings")(db, mw));
+  app.use("/api", require("./ihhl")(db, mw));
+  app.use("/api", require("./hotspots")(db, mw));
+  app.use("/api", require("./cleanliness")(db, mw));
+  app.use("/api", require("./greywater")(db, mw));
+  app.use("/api", require("./swm")(db, mw));
+  app.use("/api", require("./dashboard")(db, mw));
+  app.use("/api", require("./export")(db, mw));
+  app.use("/api", require("./qr")(db, mw));
+  app.use("/api", require("./notifications")(db, mw));
+};

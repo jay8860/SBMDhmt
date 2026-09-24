@@ -73,7 +73,7 @@ async function backfillFacilities(db, { nowISO }) {
   const wards = allGps.filter((w) => prefer.has(w.id));
   const list = wards.length ? wards : allGps.slice(0, 6);
   for (const w of list) {
-    const vil = await db.get("SELECT * FROM villages WHERE ward_id = ? ORDER BY rowid", [w.id]);
+    const vil = await db.get("SELECT * FROM villages WHERE ward_id = ? ORDER BY id", [w.id]);
     const hi = (w.name_hi || "").replace(/^ग्राम पंचायत\s+/, "") || w.name_hi;
     const lat = 20.71 + (String(w.id).length % 7) * 0.01;
     const lng = 81.54 + (String(w.id).length % 5) * 0.01;

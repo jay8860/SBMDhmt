@@ -9,7 +9,7 @@ function scopedList(db, table, user, extraWhere, extraParams) {
     const params = [...sc.params];
     if (req.query.ward_id) { sql += " AND ward_id = ?"; params.push(req.query.ward_id); }
     if (extraWhere) { sql += ` AND ${extraWhere}`; if (extraParams) params.push(...extraParams(req)); }
-    sql += " ORDER BY rowid DESC LIMIT 2000";
+    sql += " ORDER BY id DESC LIMIT 2000";
     res.json(await db.all(sql, params));
   };
 }
